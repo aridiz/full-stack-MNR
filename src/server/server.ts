@@ -1,8 +1,9 @@
 import express from "express"; 
 import os from "node:os";
-
 import config from "./config";
-console.log(config);
+
+//TEST
+console.log({config});
 
 const server = express();
 
@@ -23,8 +24,8 @@ server.use("/", (req, res) => {
 
 });
 
-server.listen("8080", "0.0.0.0", () => { //port, machine host, function
-    console.info("Express server il listening at http://0.0.0.0:8080",
+server.listen(config.PORT, config.HOST, () => { //port, machine host, function
+    console.info(`Express server il listening at ${config.SERVER_URL}`,
     `Free mem: ${os.freemem() / 1024 / 1024}`,
     //debugging line should not stay in the code 
     );
