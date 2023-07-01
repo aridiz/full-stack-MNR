@@ -1,11 +1,11 @@
-import { MongoClient } from "mongodb";
-import {MONGODB_URL, DATABASE_NAME} from "./config";
+import { MongoClient } from "mongodb"
+import {MONGODB_URL, DATABASE_NAME} from "./config"
 
 let connectedClient;
 //async call 
 export const connectClient = async () => {
     //if already connected return the same
-    if (connectClient){
+    if (connectedClient){
         return connectedClient.db(DATABASE_NAME);
     }
 
@@ -24,5 +24,6 @@ export const connectClient = async () => {
 }
 
 export const stopClient = async () => {
+    //if exists, stop connected client
     await connectedClient?.close();
 }
