@@ -15,7 +15,7 @@ server.use("/", (req, res) => {
     //insert the name of the templating file
     res.render("index", {
         // content: "EJS is cool",
-        content: "<em>EJS</em> is cool",
+        initialContent: "Loading...",
     }); //diplays the ejs templatefile in views folder
 
 
