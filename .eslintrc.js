@@ -9,6 +9,7 @@ module.exports = {
     es6: true,
     node: true,
   },
+  //plugins for REACT 
   plugins: ["eslint-plugin-react", "eslint-plugin-react-hooks"],
   extends: [
     "eslint:recommended",
@@ -23,7 +24,9 @@ module.exports = {
   rules: {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-
     // You can do more rule customizations here...
+    // "react/jsx-key": "warn",
+    // "react/jsx-key": "error",
+    "react/jsx-key": "off",
   },
 };

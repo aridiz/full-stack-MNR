@@ -2,10 +2,7 @@
 //react-dom
 import {createRoot} from "react-dom/client"
 
-const App = () => {
-    return <div>Hello React</div>;
-    // return React.createElement("Div", null, "Hello React");
-}
+import App from "./components/app";
 
 //container with the id in HTML - entry point for React
 const container = document.getElementById("app");

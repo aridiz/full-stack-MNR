@@ -2,7 +2,8 @@ import { connectClient, stopClient } from "../server/db";
 
 async function main() {
   const client = await connectClient();
-
+  
+  //contests: MongoDB collection
   await client.collection("contests").deleteMany({});
 
   const resp = await client.collection("contests").insertMany([

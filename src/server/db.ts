@@ -17,7 +17,7 @@ export const connectClient = async () => {
     await client.db(DATABASE_NAME).command({ping:1});
     console.info("Connected to MongoDB");
     
-    //assing the value to connected client cache
+    //assing the client to the client cache
     connectedClient = client;
 
     return client.db(DATABASE_NAME);
