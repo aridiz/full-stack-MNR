@@ -1,6 +1,7 @@
 import express from "express"; 
 import os from "node:os";
 import config from "./config";
+import apiRouter from "./api-router";
 
 //TEST
 console.log({config});
@@ -11,6 +12,7 @@ server.use(express.static("dist")); //add a middleware, a layer for the request 
 
 server.set("view engine", "ejs"); //telling that EJS will be used in the project
 
+server.use("/api", apiRouter)
 server.use("/", (req, res) => {
     //insert the name of the templating file
     res.render("index", {
