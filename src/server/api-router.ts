@@ -14,10 +14,21 @@ router.get("/contests", async (req,res) => {
         id: 1,
         categoryName: 1,
         contestName: 1,
+        _id: 0, //removed
     })
     .toArray();
 
     res.send({ contests }); //TEST object response
+});
+
+router.get("/contest/:contestId", async (req,res) => {
+    const client = await connectClient();
+
+    const contest = await client
+    .collection("contests")
+    .findOne({ id: req.params.contestId});
+
+    res.send({ contest }); //TEST object response
 });
 
 // router.get("/contests");
