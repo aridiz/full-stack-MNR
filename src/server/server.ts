@@ -14,9 +14,10 @@ server.use("/api", apiRouter);
 
 server.use("/", async (req, res) => {
 
-    const {initialMarkup} = await serverRender(); //promise
+    const {initialMarkup, initialData} = await serverRender(); //promise
     res.render("index", {
         initialMarkup,
+        initialData,
     }); //diplays the ejs templatefile in views folder
 });
 

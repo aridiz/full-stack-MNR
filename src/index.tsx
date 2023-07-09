@@ -8,5 +8,4 @@ import App from "./components/app";
 const container = document.getElementById("app");
 const root = createRoot(container);
 
-root.render(<App initialData={ {contests: []} } />
-); //react component to be rendered
+root.render(<App initialData={ (window as any).initialData } />); //react component to be rendered
