@@ -1,5 +1,5 @@
 import { MongoClient } from "mongodb"
-import {MONGODB_URL, DATABASE_NAME} from "./config"
+import {MONGODB_URI, DATABASE_NAME} from "./config"
 
 let connectedClient;
 //async call 
@@ -10,7 +10,7 @@ export const connectClient = async () => {
     }
 
     //creating the client object
-    const client = new MongoClient(MONGODB_URL);
+    const client = new MongoClient(MONGODB_URI);
     //connect client
     await client.connect();
     //ping command

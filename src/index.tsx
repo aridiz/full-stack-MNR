@@ -1,6 +1,9 @@
 //this file is going to contain some jsx
 //react-dom
 import {createRoot} from "react-dom/client"
+import axios from "axios";
+
+import { API_SERVER_URL } from "./public-config";
 
 import App from "./components/app";
 
@@ -8,5 +11,10 @@ import App from "./components/app";
 const container = document.getElementById("app");
 const root = createRoot(container);
 
-root.render(<App />); //react component to be rendered
+//JS Promis
+axios.get(`${API_SERVER_URL}/contests`).then((resp) => {
+    console.log(resp);
+    root.render(<App initialData={ {contests: resp.data.contests} } />
+    ); //react component to be rendered
+});
 

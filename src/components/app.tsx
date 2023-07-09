@@ -1,15 +1,12 @@
 // import { useState } from "react"; //used most
 import Header from "./header";
+import ContestList from "./contest-list";
 
-const App = () => {
-    //useState() function imported > makes React register a state variable for the component
-    //state variable: reactive variable that changes
-    //array: current value, function update 
-
+const App = ( {initialData} ) => {
     return (
     <div className="container">
         <Header message="Naming Contests" />
-
+        <ContestList contests={initialData.contests} />
     </div>
     );
 };
