@@ -1,6 +1,6 @@
 //this file is going to contain some jsx
 //react-dom
-import {createRoot} from "react-dom/client"
+import {createRoot} from "react-dom/client";
 
 import App from "./components/app";
 

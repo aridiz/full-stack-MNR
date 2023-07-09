@@ -6,8 +6,8 @@ const ContestList = ({ initialContests }) => {
     const [contests, setContests] = useState(initialContests);
 
     useEffect(() => {
-    fetchContests().then((data) => { //call the function and then.. 
-        setContests(data.contests); 
+    fetchContests().then((contests) => { //call the function and then.. 
+        setContests(contests); 
     }); 
 }, []); //after the first render stops re-rendering
 
