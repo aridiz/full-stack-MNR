@@ -1,12 +1,23 @@
 import express from "express";
+import { connectClient } from "./db";
 
 const router = express.Router();
 
-import testData from "../test-data.json"; //mock data object
-
-router.get("/contests", (req,res) => {
+router.get("/contests", async (req,res) => {
     //get the data from MongoDB
-    res.send({ contests: testData }); //TEST object response
+    const client = await connectClient();
+
+    const contests = await client.collection("contests")
+    .find()
+    .project({
+        //include only these fields
+        id: 1,
+        categoryName: 1,
+        contestName: 1,
+    })
+    .toArray();
+
+    res.send({ contests }); //TEST object response
 });
 
 // router.get("/contests");
