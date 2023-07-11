@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { disableValidation } from "schema-utils";
 import { fetchContest } from "../api-client";
 import Header from "./header";
 
@@ -19,6 +18,13 @@ const Contest = ( {initialContest, onContestListClick} ) => { //receive the id
         event.preventDefault();
         onContestListClick();
     };
+
+    const handleNewNameSubmit = (event) => {
+        //API DOM interaction to get the value of the form
+        event.preventDefault();
+        const newNameInput = event.target.newName;
+        console.log(newNameInput.value);
+    }
     //return HTML contest structure
     return (
         <>
@@ -36,6 +42,13 @@ const Contest = ( {initialContest, onContestListClick} ) => { //receive the id
                 </div>)
                 : <div>No names proposed yet</div>
             }
+            </div>
+            <div className="title">Propose a new name</div>
+            <div className="body">
+                <form onSubmit={handleNewNameSubmit}>
+                   <input type="text" name="newName" placeholder="new name here" />
+                   <button type="submit">Submit</button> 
+                </form>
             </div>
             <a href="/" className="link" onClick={handleClickContestList}>Contests List</a>
         </div>
