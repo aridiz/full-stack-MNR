@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import { fetchContest } from "../api-client";
+// import { fetchContest } from "../api-client";
 import Header from "./header";
 
-const Contest = ( {id} ) => { //receive the id
-    const [contest, setContest] = useState({}); //empty ojbect?
-    useEffect(() => {
-        fetchContest(id).then((contest) => {
-            setContest(contest);
-        });
-    }, [id]); //dependency array - just one network request
-    //return HTML contest structure
+const Contest = ( {initialContest} ) => { //receive the id
+    const [contest, setContest] = useState(initialContest); //empty ojbect?
+    // useEffect(() => {
+    //     fetchContest(id).then((contest) => {
+    //         setContest(contest);
+    //     });
+    // }, [id]); //dependency array - just one network request
+    // //return HTML contest structure
     return (
         <>
         <Header message={contest.contestName} />

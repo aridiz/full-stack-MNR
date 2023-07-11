@@ -12,9 +12,8 @@ server.set("view engine", "ejs"); //telling that EJS will be used in the project
 
 server.use("/api", apiRouter); 
 
-server.use("/", async (req, res) => {
-
-    const {initialMarkup, initialData} = await serverRender(); //promise
+server.get(["/", "/contest/:contestId"], async (req, res) => {
+    const {initialMarkup, initialData} = await serverRender(req); //promise
     res.render("index", {
         initialMarkup,
         initialData,

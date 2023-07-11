@@ -5,8 +5,10 @@ import Contest from "./contest";
 
 const App = ( {initialData} ) => {
     //the page variable can be either contestList or contest
-    const [page, setPage] = useState<"contestList" | "contest">("contestList",);
-    const [currentContestId, setCurrentContestId] = useState<string | undefined>(); //undefined as default
+    const [page, setPage] = useState<"contestList" | "contest">(
+        initialData.currentContest ? "contest" : "contestList",);
+    const [currentContest, setCurrentContest] = useState<object | undefined>(
+        initialData.currentContest); 
     
     //manage path when clicking on back and forward on the browser
     useEffect(() => {
@@ -15,14 +17,14 @@ const App = ( {initialData} ) => {
             ? "contest" 
             : "contestList";
             setPage(newPage);
-            setCurrentContestId(event.state?.contestId);
+            setCurrentContest({id: event.state?.contestId});
         };
     }, []);
 
     const navigateToContest = (contestId) => {
         window.history.pushState({contestId}, "", `/contest/${contestId}`); //dynamic URL
         setPage("contest");
-        setCurrentContestId(contestId);
+        setCurrentContest({id : contestId});
     };
 
     const pageContent = () => {
@@ -30,7 +32,7 @@ const App = ( {initialData} ) => {
             case "contestList": 
                 return <ContestList initialContests={initialData.contests} onContestClick={navigateToContest}/>
             case "contest": 
-                return <Contest id={currentContestId} />;
+                return <Contest initialContest={currentContest} />;
             // default:
             //     break;
         }
