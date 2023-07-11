@@ -13,32 +13,6 @@ Source: **[samer.dev/mnr](https://samer.dev/mnr)**
   },
 ```
 
-#### package.json dependencies
-
-```
-  "dependencies": {
-    "axios": "^0.27.2",
-    "cors": "^2.8.5",
-    "ejs": "^3.1.8",
-    "express": "^4.18.1",
-    "mongodb": "^4.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "ts-loader": "^9.3.1",
-    "typescript": "^4.7.4",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
-  },
-  "devDependencies": {
-    "@typescript-eslint/parser": "^5.33.0",
-    "eslint": "^8.22.0",
-    "eslint-plugin-react": "^7.30.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^2.7.1",
-    "ts-node-dev": "^2.0.0"
-  }
-```
-
 #### Mock Data
 
 ```json
