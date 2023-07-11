@@ -1,6 +1,6 @@
 //this file is going to contain some jsx
 //react-dom
-import {createRoot} from "react-dom/client"
+import {createRoot} from "react-dom/client";
 
 import App from "./components/app";
 
@@ -8,5 +8,4 @@ import App from "./components/app";
 const container = document.getElementById("app");
 const root = createRoot(container);
 
-root.render(<App />); //react component to be rendered
-
+root.render(<App initialData={ (window as any).initialData } />); //react component to be rendered

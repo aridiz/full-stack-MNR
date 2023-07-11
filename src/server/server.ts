@@ -2,9 +2,7 @@ import express from "express";
 import os from "node:os";
 import config from "./config";
 import apiRouter from "./api-router";
-
-//TEST
-console.log({config});
+import serverRender from "./render";
 
 const server = express();
 
@@ -12,18 +10,15 @@ server.use(express.static("dist")); //add a middleware, a layer for the request 
 
 server.set("view engine", "ejs"); //telling that EJS will be used in the project
 
-server.use("/api", apiRouter)
-server.use("/", (req, res) => {
-    //insert the name of the templating file
+server.use("/api", apiRouter); 
+
+server.use("/", async (req, res) => {
+
+    const {initialMarkup, initialData} = await serverRender(); //promise
     res.render("index", {
-        // content: "EJS is cool",
-        initialContent: "Loading...",
+        initialMarkup,
+        initialData,
     }); //diplays the ejs templatefile in views folder
-
-
-    //response in webpage at http://0.0.0.0:8080
-    // res.send("Test");
-
 });
 
 server.listen(config.PORT, config.HOST, () => { //port, machine host, function
