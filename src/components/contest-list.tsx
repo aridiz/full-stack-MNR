@@ -1,9 +1,9 @@
 import ContestPreview from "./contest-preview";
 import { useEffect, useState } from "react"; 
-// import { fetchContests } from "../api-client";
+// import { fetchContestList } from "../api-client";
 
 const ContestList = ({ initialContests, onContestClick }) => {
-    const [contests, setContests] = useState(initialContests);
+    const [contests] = useState(initialContests);
 
     useEffect(() => {
     // fetchContests().then((contests) => { //call the function and then.. 
@@ -12,6 +12,7 @@ const ContestList = ({ initialContests, onContestClick }) => {
 }, []); //after the first render stops re-rendering
 
     return (
+        <>
         <div className="contest-list">
                     {contests.map((contest) => {
                     return (
@@ -19,7 +20,8 @@ const ContestList = ({ initialContests, onContestClick }) => {
                     );
                     })}
                 </div>
-            );
+        </>
+        );
 };
 
 export default ContestList;

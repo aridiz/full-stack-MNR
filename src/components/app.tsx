@@ -1,19 +1,16 @@
 // import { useState } from "react"; //used most
-import Header from "./header";
 import ContestList from "./contest-list";
 import { useState } from "react";
 import Contest from "./contest";
 
-//page: contestList or contest 
-
 const App = ( {initialData} ) => {
-    const [page, setPage] = useState("contestList");
-    const [currentContestId, setCurrentContestId] = useState(); //undefined as default
+    //the page variable can be either contestList or contest
+    const [page, setPage] = useState<"contestList" | "contest">("contestList",);
+    const [currentContestId, setCurrentContestId] = useState<string | undefined>(); //undefined as default
     
     const navigateToContest = (contestId) => {
         setPage("contest");
         setCurrentContestId(contestId);
-        console.log(contestId); //testing click on contest 
     }
 
     const pageContent = () => {
@@ -29,7 +26,7 @@ const App = ( {initialData} ) => {
 
     return (
     <div className="container">
-        <Header message="Naming Contests" />
+
         {pageContent()}
     </div>
     );
