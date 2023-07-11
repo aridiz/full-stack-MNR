@@ -28,9 +28,8 @@ const Contest = ( {initialContest, onContestListClick} ) => { //receive the id
             contestId: contest.id, 
             newNameValue: newNameInput.value
         };
-        console.log("to post", postBody);
         const updatedContest = await addNewNameToContest(postBody);
-        console.log(`Contest.tsx: ${updatedContest}`);
+        setContest(updatedContest); //to update immediately new data in broswer page
     };
     //return HTML contest structure
     return (

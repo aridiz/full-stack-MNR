@@ -65,5 +65,6 @@ router.post("/contest/:contestId", async (req,res) => {
     res.send({ updatedContest: doc.value}); //new list of names
 });
 
-// router.get("/contests");
+//Insert new contest
+//TODO 
 export default router;
