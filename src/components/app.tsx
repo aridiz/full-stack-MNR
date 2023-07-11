@@ -7,6 +7,7 @@ const App = ( {initialData} ) => {
     //the page variable can be either contestList or contest
     const [page, setPage] = useState<"contestList" | "contest">(
         initialData.currentContest ? "contest" : "contestList",);
+        //faking an object that has the Id of the contest that we want
     const [currentContest, setCurrentContest] = useState<object | undefined>(
         initialData.currentContest); 
     
@@ -40,7 +41,6 @@ const App = ( {initialData} ) => {
 
     return (
     <div className="container">
-
         {pageContent()}
     </div>
     );
