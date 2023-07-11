@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchContest } from "../api-client";
+import { addNewNameToContest, fetchContest } from "../api-client";
 import Header from "./header";
 
 const Contest = ( {initialContest, onContestListClick} ) => { //receive the id
@@ -19,12 +19,19 @@ const Contest = ( {initialContest, onContestListClick} ) => { //receive the id
         onContestListClick();
     };
 
-    const handleNewNameSubmit = (event) => {
+    const handleNewNameSubmit = async (event) => {
         //API DOM interaction to get the value of the form
         event.preventDefault();
         const newNameInput = event.target.newName;
-        console.log(newNameInput.value);
-    }
+        //await async post functions that uses contest Id and the new name
+        const postBody = {
+            contestId: contest.id, 
+            newNameValue: newNameInput.value
+        };
+        console.log("to post", postBody);
+        const updatedContest = await addNewNameToContest(postBody);
+        console.log(`Contest.tsx: ${updatedContest}`);
+    };
     //return HTML contest structure
     return (
         <>
