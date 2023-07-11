@@ -1,15 +1,18 @@
 import ContestPreview from "./contest-preview";
 import { useEffect, useState } from "react"; 
-// import { fetchContestList } from "../api-client";
+import { fetchContestList } from "../api-client";
 
 const ContestList = ({ initialContests, onContestClick }) => {
-    const [contests] = useState(initialContests);
+    const [contests, setContests] = useState(initialContests ?? []);
 
+    //only fetch contest if they don't exist
     useEffect(() => {
-    // fetchContests().then((contests) => { //call the function and then.. 
-    //     setContests(contests); 
-    // }); 
-}, []); //after the first render stops re-rendering
+        if (!initialContests) {
+        fetchContestList().then((contests) => { //call the function and then.. 
+            setContests(contests); 
+        }); 
+    }
+}, [initialContests]); //dependency array | after the first render stops re-rendering
 
     return (
         <>

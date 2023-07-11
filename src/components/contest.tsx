@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchContest } from "../api-client";
 import Header from "./header";
 
-const Contest = ( {initialContest} ) => { //receive the id
+const Contest = ( {initialContest, onContestListClick} ) => { //receive the id
     const [contest, setContest] = useState(initialContest); //empty ojbect?
 
     useEffect(() => {
@@ -14,6 +14,10 @@ const Contest = ( {initialContest} ) => { //receive the id
     }
     }, [contest.id, contest.names]); //dependency array - just one network request
 
+    const handleClickContestList = (event) => {
+        event.preventDefault();
+        onContestListClick(); 
+    }; 
     //return HTML contest structure
     return (
         <>
@@ -21,6 +25,7 @@ const Contest = ( {initialContest} ) => { //receive the id
         <div className="contest">
             <div className="title">Contest Description</div>
             <div className="description">{contest.description}</div>
+            <a href="/" className="link" onClick={handleClickContestList}>Contests List</a>
         </div>
 </>
     );
